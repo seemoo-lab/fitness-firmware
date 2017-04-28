@@ -5,25 +5,39 @@
 #include <wrapper.h>
 #include "stm32.h"
 
+
+
+void
+reset_swd_pins() {
+    // enable clock
+    RCC->AHBENR |= RCC_AHBENR_GPIOAEN;
+    // TODO what about low power mode register?
+
+    // clear bits for GPIO mode
+    GPIOA->MODER &= ~(GPIO_MODER_MODER14 | GPIO_MODER_MODER13);
+    // set bits for port 13 (SWDIO) and port 14 (SWCLK)
+    GPIOA->MODER |= (GPIO_MODER_MODER14_1 | GPIO_MODER_MODER13_1);
+
+    // clear pull up / pull down bits
+    GPIOA->PUPDR &= ~(GPIO_PUPDR_PUPDR13 | GPIO_PUPDR_PUPDR14);
+}
+
+void
+open_command_prompt_loop_hook() {
+    reset_swd_pins();
+    open_command_prompt_loop();
+}
+
+__attribute__((at(0x8026020, "", CHIP_VER_FITBIT, FW_VER_FITBIT)))
+GenericPatch4(command_promt_addr, open_command_prompt_loop_hook+1);
+
 int
 hook_app_parse_command(int start, unsigned int length, int bluetooth_process2, int response_type) {
     char command = *((char *)start + 1);
 
-    //this is our command, it gets ignored from the firmware
-    //we can still continue to the original function
+    //this is our custom command
     if(command == 2) {
-
-        // enable clock
-        RCC->AHBENR |= RCC_AHBENR_GPIOAEN;
-        // TODO what about low power mode register?
-
-        // clear bits for GPIO mode
-        GPIOA->MODER &= ~(GPIO_MODER_MODER14 | GPIO_MODER_MODER13);
-        // set bits for port 13 (SWDIO) and port 14 (SWCLK)
-        GPIOA->MODER |= (GPIO_MODER_MODER14_1 | GPIO_MODER_MODER13_1);
-
-        // clear pull up / pull down bits
-        GPIOA->PUPDR &= ~(GPIO_PUPDR_PUPDR13 | GPIO_PUPDR_PUPDR14);
+        reset_swd_pins();
         print_string("GPIOA->MODER: %x#", (GPIOA->MODER));
         return 1;
     } else {
