@@ -61,6 +61,26 @@ int
 app_parse_command(int start, unsigned int length, int bluetooth_process2, int response_type)
 RETURN_DUMMY
 
+AT(CHIP_VER_FITBIT, FW_VER_FITBIT, 0x800EF10)
+int
+bt_send_live_mode(int a1, int a2, int a3, int a4, int a5, int a6)
+RETURN_DUMMY
+
+AT(CHIP_VER_FITBIT, FW_VER_FITBIT, 0x80222B0)
+int 
+print_string(const char *format, ...) 
+RETURN_DUMMY
+
+AT(CHIP_VER_FITBIT, FW_VER_FITBIT, 0x802241C)
+void
+open_command_prompt_loop()
+VOID_DUMMY
+
+AT(CHIP_VER_FITBIT, FW_VER_FITBIT, 0x800A37E)
+int
+app_check_crypto_required(char situation)
+RETURN_DUMMY
+
 #undef VOID_DUMMY
 #undef RETURN_DUMMY
 #undef AT
