@@ -58,7 +58,7 @@ RETURN_DUMMY
 
 AT(CHIP_VER_FITBIT, FW_VER_FITBIT, 0x800C62C)
 int
-app_parse_command(int start, unsigned int length, int bluetooth_process2, int response_type)
+app_parse_command(int start, unsigned int length, int bluetooth_process2, char *response_type)
 RETURN_DUMMY
 
 AT(CHIP_VER_FITBIT, FW_VER_FITBIT, 0x800EF10)
@@ -79,6 +79,66 @@ VOID_DUMMY
 AT(CHIP_VER_FITBIT, FW_VER_FITBIT, 0x800A37E)
 int
 app_check_crypto_required(char situation)
+RETURN_DUMMY
+
+AT(CHIP_VER_FITBIT, FW_VER_FITBIT, 0x80121EA)
+int 
+lib_aci_send_data(char pipe, char *data, unsigned char size)
+RETURN_DUMMY
+
+AT(CHIP_VER_FITBIT, FW_VER_FITBIT, 0x800F1F4)
+int 
+memcpy(char *dst, char *src, unsigned int length)
+RETURN_DUMMY
+
+AT(CHIP_VER_FITBIT, FW_VER_FITBIT, 0x800CEAC)
+int
+j_bt_send_bytes(char *a1, int a2, unsigned int length)
+RETURN_DUMMY
+
+AT(CHIP_VER_FITBIT, FW_VER_FITBIT, 0x80130EC)
+void
+_bt_send__live_mode()
+VOID_DUMMY
+
+AT(CHIP_VER_FITBIT, FW_VER_FITBIT, 0x801A570)
+int
+vibrate(int a1, int a2)
+RETURN_DUMMY
+
+AT(CHIP_VER_FITBIT, FW_VER_FITBIT, 0x8017B16)
+void
+port_d_ext_peripherals()
+VOID_DUMMY
+
+AT(CHIP_VER_FITBIT, FW_VER_FITBIT, 0x8014F74)
+int
+led_cycle_pattern2(int a1)
+RETURN_DUMMY
+
+AT(CHIP_VER_FITBIT, FW_VER_FITBIT, 0x800EE56)
+void
+rf_bt_timer_exti_aci_command_wrapper()
+VOID_DUMMY
+
+AT(CHIP_VER_FITBIT, FW_VER_FITBIT, 0x8012DB2)
+void
+c_aci_command_wrapper(int a1)
+VOID_DUMMY
+
+AT(CHIP_VER_FITBIT, FW_VER_FITBIT, 0x8013CF4)
+int
+rf_get_mode(char *a1)
+RETURN_DUMMY
+
+AT(CHIP_VER_FITBIT, FW_VER_FITBIT, 0x8013D06)
+int
+rf_set_mode()
+RETURN_DUMMY
+
+AT(CHIP_VER_FITBIT, FW_VER_FITBIT, 0x800AA7A)
+int 
+perform_dump(char dumptype, int address, int length)
 RETURN_DUMMY
 
 #undef VOID_DUMMY
