@@ -1,8 +1,0 @@
-obj
-dep
-
-parser.h
-parser.c
-scanner.h
-scanner.c
-b43-asm.bin
