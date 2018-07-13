@@ -97,9 +97,9 @@ j_bt_send_bytes(char *a1, int a2, unsigned int length)
 RETURN_DUMMY
 
 AT(CHIP_VER_FITBIT, FW_VER_FITBIT, 0x80130EC)
-void
+int
 _bt_send__live_mode()
-VOID_DUMMY
+RETURN_DUMMY
 
 AT(CHIP_VER_FITBIT, FW_VER_FITBIT, 0x801A570)
 int
@@ -139,6 +139,16 @@ RETURN_DUMMY
 AT(CHIP_VER_FITBIT, FW_VER_FITBIT, 0x800AA7A)
 int 
 perform_dump(char dumptype, int address, int length)
+RETURN_DUMMY
+
+AT(CHIP_VER_FITBIT, FW_VER_FITBIT, 0x08012FCC)
+int 
+prepare_packet(int data, char length, char a3)
+RETURN_DUMMY
+
+AT(CHIP_VER_FITBIT, FW_VER_FITBIT, 0x0800EF66)
+int 
+send_packet(int data)
 RETURN_DUMMY
 
 #undef VOID_DUMMY
