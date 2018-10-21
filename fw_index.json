@@ -45,5 +45,31 @@
 	"additionalinfo": ""
       }
     ]
+  },
+  {
+    "name": "Charge HR",
+    "fwfiles": [
+      {
+	"fwshortname": "stock_18_32",
+        "description": "Stock fitbit firmware, no custom modifications. This firmware version is the first which ever was published for Charge HR and has major issues.",
+        "version": "18.32",
+        "location": "firmwares/chargehr/18_32/flash.bin",
+	"additionalinfo": "You can find official information on firmware versions [here](https://help.fitbit.com/articles/en_US/Help_article/1372)."
+      },
+      {
+	"fwshortname": "steps100_18_32",
+        "description": "Steps*100",
+        "version": "18.32",
+        "location": "patches/chargehr/18_32/steps100/flash.bin",
+	"additionalinfo": "You can find official information on firmware versions [here](https://help.fitbit.com/articles/en_US/Help_article/1372)."
+      },
+      {
+	"fwshortname": "18_128",
+        "description": "Stock Fitbit firmware, most recent version. Security updates in this firmware version include:\r\n- Removal of authenticated memory readout.\r\n- Option to disable authenticated live mode via the app.",
+        "version": "18.128",
+        "location": "firmwares/chargehr/18_128/flash.bin",
+	"additionalinfo": "You can find official information on firmware versions [here](https://help.fitbit.com/articles/en_US/Help_article/1372)."
+      }
+    ]
   }
 ]
